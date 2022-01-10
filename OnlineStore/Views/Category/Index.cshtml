@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Category>
+
+<div class="container">
+    <div>
+         <a class="btn btn-outline-info float-right" asp-controller="Category" asp-action="Create"> <i class="fas fa-plus"></i> &nbsp;Create Category</a>
+    </div>
+    <br/> <br/>
+    <h4 class="text-center">List Category</h4>
+    @foreach (var category in Model)
+    {
+        <a class="row" asp-controller="Category" asp-action="Details" asp-route-categoryId="@category.Id">
+            <div class="col">@category.Name</div>
+            <div class="col">@category.Store.Name</div>
+        </a>
+    }
+</div>

@@ -1,0 +1,33 @@
+﻿@model Category
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <form asp-controller="Category" asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StoreId"></label>
+                    <select asp-for="StoreId" class="form-control" asp-items="ViewBag.categoryId"></select>
+                    <span asp-validation-for="StoreId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Edit" class="btn btn-outline-primary" />
+                </div>
+            </form>
+            <a asp-controller="Category" asp-action="Index">Back</a>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+ 
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

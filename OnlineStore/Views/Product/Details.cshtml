@@ -1,0 +1,59 @@
+﻿@model Product
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <form asp-controller="Product" asp-action="Details" method="post">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="CategoryId" />
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" disabled="" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price"></label>
+                    <input asp-for="Price" class="form-control" disabled="" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <textarea asp-for="Description" class="form-control" disabled=""></textarea>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Category"></label>
+                    <input asp-for="Category.Name" class="form-control" disabled="" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image"></label>
+                    <input asp-for="Image" class="form-control" disabled="" />
+                </div>
+            </form>
+
+            <a class="btn btn-outline-success" asp-controller="Product" asp-action="Edit" asp-route-productId="@Model.Id"> <i class="far fa-edit"></i> </a>
+
+            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal"> <i class="far fa-trash-alt"></i> </button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Do you want to delete a category?
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form asp-controller="Product" asp-action="Delete" asp-route-productId="@Model.Id" method="post">
+                                <input class="btn btn-outline-danger" type="submit" value="Delete" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="btn btn-outline-secondary" asp-controller="Product" asp-action="Index"> <i class="far fa-arrow-alt-circle-left"> </i></a>
+        </div>
+        <div class="col-4 pt-4">
+            <img src="@Model.Image" width="100%" style="border-radius: 5px; border: 1px; solid-color: dimgray"/>
+        </div>
+    </div>
+</div>

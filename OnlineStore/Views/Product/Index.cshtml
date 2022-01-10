@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Product>
+
+<div class="container">
+    <div>
+        <a class="btn btn-outline-info float-right" asp-controller="Product" asp-action="Create"> <i class="fas fa-plus"></i> &nbsp;Create new product</a>
+    </div>
+    <br/> <br/>
+    <h4 class="text-center">List Product</h4>
+    @foreach (var product in Model)
+    {
+        <a class="row" asp-controller="Product" asp-action="Details" asp-route-productId="@product.Id">
+            <div class="col">@product.Name</div>
+            <div class="col">@product.Price</div>
+            <div class="col">@product.Description</div>
+            <div class="col">@product.Category.Name</div>
+        </a>
+    }
+</div>
