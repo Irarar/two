@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,6 +10,7 @@ using OnlineStore.Services;
 
 namespace OnlineStore.Controllers
 {
+    [Authorize(Roles = Role.AdminRole)]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
@@ -108,7 +110,7 @@ namespace OnlineStore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(Guid productId)
         {
-            var objFromDb = _productService.GettingModelAsync(productId);
+            var objFromDb = _productService.DeleteTheModelAsync(productId);
             string ImagePath = @"\images\products\";
             string upload = _web.WebRootPath + ImagePath;
             string filename = Guid.NewGuid().ToString();

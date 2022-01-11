@@ -5,10 +5,16 @@
         <a class="btn btn-outline-info float-right" asp-controller="Product" asp-action="Create"> <i class="fas fa-plus"></i> &nbsp;Create new product</a>
     </div>
     <br/> <br/>
-    <h4 class="text-center">List Product</h4>
+    <h4 class="text-center pb-4">List Product</h4>
+    <div class="row pb-4">
+        <div class="col">Name</div>
+        <div class="col">Price</div>
+        <div class="col">Description</div>
+        <div class="col">Category Name</div>
+    </div>
     @foreach (var product in Model)
     {
-        <a class="row" asp-controller="Product" asp-action="Details" asp-route-productId="@product.Id">
+        <a class="row pb-2" asp-controller="Product" asp-action="Details" asp-route-productId="@product.Id">
             <div class="col">@product.Name</div>
             <div class="col">@product.Price</div>
             <div class="col">@product.Description</div>

@@ -19,7 +19,7 @@ namespace OnlineStore.Services
         public Task<Guid> CreateAsync(Product product);
         public Task DeleteAsync(Guid productId);
         public Task<Product> GettingTheModelAsync(Product product);
-        public Task<Product> GettingModelAsync(Guid productId);
+        public Task<Product> DeleteTheModelAsync(Guid productId);
     }
 
     public class ProductService : IProductService
@@ -67,7 +67,7 @@ namespace OnlineStore.Services
           return await _db.Products.AsNoTracking().FirstOrDefaultAsync(p => p.Id == product.Id);
             
         }
-        public async Task<Product> GettingModelAsync(Guid productId)
+        public async Task<Product> DeleteTheModelAsync(Guid productId)
         {
             return await _db.Products.AsNoTracking().FirstOrDefaultAsync(p => p.Id == productId);
 
